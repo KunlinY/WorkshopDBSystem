@@ -1,3 +1,4 @@
+# coding=utf-8
 from django.db import models
 
 
@@ -19,7 +20,16 @@ class Class(models.Model):
         primary_key=True, verbose_name='班组号'
     )
     cType = models.CharField(
-        max_length=10, verbose_name='班组类型'
+        max_length=10, verbose_name='班组类型',
+        choices=(
+            ('原料组','原料组'),
+            ('前处理组','前处理组'),
+            ('热厨组','热厨组'),
+            ('调料组','调料组'),
+            ('包装组','包装组'),
+            ('米饭组','米饭组'),
+            ('产品组','产品组')
+        )
     )
     sNumber = models.ForeignKey(
         Shop, verbose_name='车间号'
@@ -40,20 +50,35 @@ class Employee(models.Model):
     eName = models.CharField(
         max_length=10, verbose_name='员工姓名'
     )
-    eSex = models.IntegerField(
-        choices=((1, '男'), (2, '女')), verbose_name='性别'
+    eSex = models.CharField(
+        choices=(('男', '男'), ('女', '女')), verbose_name='性别', max_length=5
     )
     eAge = models.IntegerField(
         verbose_name='员工年龄'
     )
     position = models.CharField(
-        max_length=20, verbose_name='岗位'
+        max_length=20, verbose_name='岗位',
+        choices = (
+            ('车间主任', '车间主任'),
+            ('车间管理人员', '车间管理人员'),
+            ('班长', '班长'),
+            ('普通职工', '普通职工')
+        )
     )
     way = models.CharField(
-        max_length=10, verbose_name='用工方式'
+        max_length=10, verbose_name='用工方式',
+        choices = (
+            ('小时工', '小时工'),
+            ('劳务工', '劳务工')
+        )
     )
     techGrading = models.CharField(
-        max_length=10, verbose_name='技术评级'
+        max_length=10, verbose_name='技术评级',
+        choices = (
+            ('高级', '高级'),
+            ('中级', '中级'),
+            ('普通', '普通')
+        )
     )
     dateOfAdmission = models.DateField(
         verbose_name='入职时间'
@@ -67,7 +92,7 @@ class Employee(models.Model):
         verbose_name_plural = verbose_name
 
     def __str__(self):
-        return '%s %s' % self.eNumber, self.eName
+        return '%s %s' % (self.eNumber, self.eName)
 
 
 class Product(models.Model):
@@ -83,7 +108,7 @@ class Product(models.Model):
         verbose_name_plural = verbose_name
 
     def __str__(self):
-        return '%s %s' % self.pNumber, self.pName
+        return '%s %s' % (self.pNumber, self.pName)
 
 
 class Depot(models.Model):
@@ -91,7 +116,11 @@ class Depot(models.Model):
         primary_key=True, verbose_name='仓库号'
     )
     dType = models.CharField(
-        max_length=10, verbose_name='仓库类型'
+        max_length=10, verbose_name='仓库类型',
+        choices = (
+            ('产品仓库', '产品仓库'),
+            ('原料仓库', '原料仓库')
+        )
     )
 
     class Meta:
@@ -99,7 +128,7 @@ class Depot(models.Model):
         verbose_name_plural = verbose_name
 
     def __str__(self):
-        return '%s %s' % self.dNumber, self.dType
+        return '%s %s' % (self.dNumber, self.dType)
 
 
 class Provider(models.Model):
@@ -115,7 +144,7 @@ class Provider(models.Model):
         verbose_name_plural = verbose_name
 
     def __str__(self):
-        return '%s %s' % self.pNumber, self.pName
+        return '%s %s' % (self.pNumber, self.pName)
 
 
 class Material(models.Model):
@@ -141,7 +170,7 @@ class Material(models.Model):
         unique_together = ('mNumber', 'dNumber')
 
     def __str__(self):
-        return '%s %s' % self.mNumber, self.dPrice
+        return '%s %s' % (self.mNumber, self.dPrice)
 
 
 class Work(models.Model):
@@ -164,7 +193,7 @@ class Work(models.Model):
         unique_together = ('eNumber', 'wDate')
 
     def __str__(self):
-        return '%s %s' % self.eNumber, self.wDate
+        return '%s %s' % (self.eNumber, self.wDate)
 
 
 class Salary(models.Model):
@@ -190,7 +219,7 @@ class Salary(models.Model):
         unique_together = ('eNumber', 'sDate')
 
     def __str__(self):
-        return '%s %s %s' % self.sDate, self.eNumber, self.sTotal
+        return '%s %s %s' % (self.sDate, self.eNumber, self.sTotal)
 
 
 class Usage(models.Model):
@@ -239,4 +268,6 @@ class Produce(models.Model):
         unique_together = ('cNumber', 'mNumber', 'pDate')
 
     def __str__(self):
-        return '%s %s' % self.pDate, self.pWeight
+        return '%s %s' % (self.pDate, self.pWeight)
+
+

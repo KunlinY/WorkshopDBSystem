@@ -1,5 +1,6 @@
+# coding=utf-8
 from django.contrib import admin
-from Workshop.models import *
+from Workshop import models
 
 
 class ShopAdmin(admin.ModelAdmin):
@@ -134,14 +135,16 @@ class ProduceAdmin(admin.ModelAdmin):
         queryset, use_distinct = super(ProduceAdmin, self).get_search_results(request, queryset, search_term)
         return queryset, use_distinct
 
-admin.site.register(Shop, ShopAdmin)
-admin.site.register(Class, ClassAdmin)
-admin.site.register(Employee, EmployeeAdmin)
-admin.site.register(Product, ProductAdmin)
-admin.site.register(Depot, DepotAdmin)
-admin.site.register(Provider, ProviderAdmin)
-admin.site.register(Material, MaterialAdmin)
-admin.site.register(Work, WorkAdmin)
-admin.site.register(Salary, SalaryAdmin)
-admin.site.register(Usage, UsageAdmin)
-admin.site.register(Produce, ProduceAdmin)
+admin.site.register(models.Shop)
+admin.site.register(models.Class)
+admin.site.register(models.Employee)
+admin.site.register(models.Product)
+admin.site.register(models.Depot)
+admin.site.register(models.Provider)
+admin.site.register(models.Material)
+admin.site.register(models.Work)
+admin.site.register(models.Salary)
+admin.site.register(models.Usage)
+admin.site.register(models.Produce)
+
+

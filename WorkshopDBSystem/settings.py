@@ -1,3 +1,4 @@
+# coding=utf-8
 """
 Django settings for WorkshopDBSystem project.
 
@@ -14,7 +15,7 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+DEFAULT_CHARSET = 'utf-8'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
@@ -83,6 +84,7 @@ DATABASES = {
         'PASSWORD': '1028',
         'HOST': 'localhost',
         'PORT': '3306',
+
     }
 }
 
