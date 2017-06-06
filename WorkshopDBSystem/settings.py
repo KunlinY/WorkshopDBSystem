@@ -57,7 +57,7 @@ ROOT_URLCONF = 'WorkshopDBSystem.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR+"/templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -81,8 +81,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'workshop',
         'USER': 'root',
-        'PASSWORD': '1028',
-        'HOST': 'localhost',
+        'PASSWORD': '334132462',
+        'HOST': '123.206.72.211',
         'PORT': '3306',
 
     }

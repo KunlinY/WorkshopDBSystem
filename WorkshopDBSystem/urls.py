@@ -20,5 +20,5 @@ import Workshop.views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^show/', Workshop.views.show)
+    url(r'^show/', Workshop.views.show_work)
 ]

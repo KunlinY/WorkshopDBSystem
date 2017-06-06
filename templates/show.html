@@ -5,10 +5,10 @@
     <title>Title</title>
 </head>
 <body>
-{& for line in employee_list %}
+{% for post in posts %}
 <tr>
-    <td>{{line.eName}}</td>
-    <td>{{line.eNumber}}</td>
+    <td>车间{{post.sNumber}}</td>
 </tr>
+{% endfor %}
 </body>
 </html>

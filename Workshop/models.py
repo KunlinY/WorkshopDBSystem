@@ -3,6 +3,7 @@ from django.db import models
 
 
 class Shop(models.Model):
+    objects = models.Manager()
     sNumber = models.AutoField(
         primary_key=True, verbose_name='车间号'
     )
@@ -16,6 +17,7 @@ class Shop(models.Model):
 
 
 class Class(models.Model):
+    objects = models.Manager()
     cNumber = models.AutoField(
         primary_key=True, verbose_name='班组号'
     )
@@ -44,6 +46,7 @@ class Class(models.Model):
 
 
 class Employee(models.Model):
+    objects = models.Manager()
     eNumber = models.AutoField(
         primary_key=True, verbose_name='员工号'
     )
@@ -75,6 +78,7 @@ class Employee(models.Model):
     techGrading = models.CharField(
         max_length=10, verbose_name='技术评级',
         choices = (
+            ('无', '无'),
             ('高级', '高级'),
             ('中级', '中级'),
             ('普通', '普通')
@@ -96,6 +100,7 @@ class Employee(models.Model):
 
 
 class Product(models.Model):
+    objects = models.Manager()
     pNumber = models.AutoField(
         primary_key=True, verbose_name='产品号'
     )
@@ -112,6 +117,7 @@ class Product(models.Model):
 
 
 class Depot(models.Model):
+    objects = models.Manager()
     dNumber = models.AutoField(
         primary_key=True, verbose_name='仓库号'
     )
@@ -132,6 +138,7 @@ class Depot(models.Model):
 
 
 class Provider(models.Model):
+    objects = models.Manager()
     pNumber = models.AutoField(
         primary_key=True, verbose_name='供应商号'
     )
@@ -148,6 +155,7 @@ class Provider(models.Model):
 
 
 class Material(models.Model):
+    objects = models.Manager()
     mNumber = models.AutoField(
         primary_key=True, verbose_name='原料号'
     )
@@ -174,6 +182,7 @@ class Material(models.Model):
 
 
 class Work(models.Model):
+    objects = models.Manager()
     eNumber = models.ForeignKey(
         Employee, verbose_name='考勤员工'
     )
@@ -197,6 +206,7 @@ class Work(models.Model):
 
 
 class Salary(models.Model):
+    objects = models.Manager()
     eNumber = models.ForeignKey(
         Employee, verbose_name='员工号'
     )
@@ -223,6 +233,7 @@ class Salary(models.Model):
 
 
 class Usage(models.Model):
+    objects = models.Manager()
     cNumber = models.ForeignKey(
         Class, verbose_name='班组号'
     )
@@ -246,6 +257,7 @@ class Usage(models.Model):
 
 
 class Produce(models.Model):
+    objects = models.Manager()
     cNumber = models.ForeignKey(
         Class, verbose_name='班组号'
     )
