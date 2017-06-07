@@ -246,6 +246,9 @@ class Usage(models.Model):
     uAmount = models.IntegerField(
          verbose_name='使用量'
     )
+    dNumber = models.ForeignKey(
+        Depot, verbose_name='仓库号'
+    )
 
     class Meta:
         verbose_name = '原料使用'

@@ -20,5 +20,6 @@ import Workshop.views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^show/', Workshop.views.show_work)
+    url(r'^show_work/', Workshop.views.show_work),
+    url(r'^show_salary/', Workshop.views.show_salary)
 ]
