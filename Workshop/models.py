@@ -264,9 +264,9 @@ class Produce(models.Model):
     cNumber = models.ForeignKey(
         Class, verbose_name='班组号'
     )
-    mNumber = models.ForeignKey(
-        Material, verbose_name='产品号'
-    )
+    pNumber = models.ForeignKey(
+        Product, verbose_name='产品号', blank=True
+    )#这里之前写错了
     pDate = models.DateField(
         verbose_name='日期'
     )
@@ -280,7 +280,7 @@ class Produce(models.Model):
     class Meta:
         verbose_name = '产品生产'
         verbose_name_plural = verbose_name
-        unique_together = ('cNumber', 'mNumber', 'pDate')
+        unique_together = ('cNumber', 'pNumber', 'pDate')
 
     def __str__(self):
         return '%s %s' % (self.pDate, self.pWeight)
