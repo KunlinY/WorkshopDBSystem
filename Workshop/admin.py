@@ -125,11 +125,11 @@ class UsageAdmin(admin.ModelAdmin):
 
 
 class ProduceAdmin(admin.ModelAdmin):
-    list_display = ('cNumber', 'mNumber', 'pDate', 'pWeight', 'pUsed')
-    search_fields = ('cNumber', 'mNumber', 'pDate', 'pWeight', 'pUsed')
+    list_display = ('cNumber', 'pNumber', 'dNumber', 'pDate', 'pWeight', 'pUsed')
+    search_fields = ('cNumber', 'pNumber', 'dNumber', 'pDate', 'pWeight', 'pUsed')
 
     def get_list_display(self, request):
-        return ['cNumber', 'mNumber', 'pDate', 'pWeight', 'pUsed']
+        return ['cNumber', 'pNumber', 'dNumber', 'pDate', 'pWeight', 'pUsed']
 
     def get_search_results(self, request, queryset, search_term):
         queryset, use_distinct = super(ProduceAdmin, self).get_search_results(request, queryset, search_term)
