@@ -76,7 +76,7 @@ def work():
 
     for i in range(1, worker):
         now = datetime.datetime.now()
-        for j in range(1, 365):
+        for j in range(1, 120):
             temp = now + datetime.timedelta(days=-j)
 
             if temp.isoweekday() == 5 or temp.isoweekday() == 6:
@@ -159,18 +159,18 @@ def usage():
 
     now = datetime.datetime.now()
     for k in range(1, 7):
-        for i in range(1, 365):
+        for i in range(1, 120):
             temp = now + datetime.timedelta(days=-i)
 
             if temp.isoweekday() == 5 or temp.isoweekday() == 6:
                 continue
 
-            for j in range(1, random.randint(50, 100)):
+            for j in range(1, 1000):
                 data.write(query.format(
                     str(k),
-                    str(random.randint(1, 999)),
+                    str(j),
                     str(temp.year) + '-' + str(temp.month) + '-' + str(temp.day),
-                    str(random.randint(10, 100))
+                    str(random.randint(0, 100))
                 ))
 
 
@@ -181,7 +181,7 @@ def produce():
             "({}, {}, {}, '{}', {}, {});\n"
     for i in range(1, 8):
         now = datetime.datetime.now()
-        for j in range(1, 365):
+        for j in range(1, 120):
             temp = now + datetime.timedelta(days=-j)
 
             if temp.isoweekday() == 5 or temp.isoweekday() == 6:
@@ -197,7 +197,6 @@ def produce():
             ))
 
 
-'''
 employee()
 data.write('\n')
 work()
@@ -212,7 +211,5 @@ material()
 data.write('\n')
 usage()
 data.write('\n')
-'''
 produce()
 data.write('\n')
-
