@@ -46,7 +46,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    #'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -57,7 +57,7 @@ ROOT_URLCONF = 'WorkshopDBSystem.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR+"/templates"],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -81,10 +81,11 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'workshop',
         'USER': 'root',
-        'PASSWORD': '334132462',
-        'HOST': '123.206.72.211',
+        'PASSWORD': '1028',
+        'HOST': 'localhost',
+        # 'PASSWORD': '334132462',
+        # 'HOST': '123.206.72.211',
         'PORT': '3306',
-
     }
 }
 
