@@ -41,7 +41,7 @@ def show_salary(request):#这里面要定义好各个内容对应的工资部分
             temp_list.append(salary.sAmount)
             temp_list.append(salary.sSubsidy)
             temp_list.append(salary.sTotal)
-        list.append(temp_list)
+            list.append(temp_list)
     return render_to_response('show_salary.html', {'posts': list},
                               RequestContext(request))
 
@@ -102,7 +102,7 @@ def show_outrate(request):
     list_rice = []
     list_product = []
     for produce in produces:
-        classes = Class.objects.fileter(cNumber = produce.cNumber)
+        classes = Class.objects.filter(cNumber = produce.cNumber)
         for class_in in classes:
             if(class_in.cType == '原料组'):
                 list_material.append(detail(produce, class_in, date))
