@@ -82,10 +82,10 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'workshop',
         'USER': 'root',
-        'PASSWORD': '1028',
-        'HOST': 'localhost',
-        # 'PASSWORD': '334132462',
-        # 'HOST': '123.206.72.211',
+        # 'PASSWORD': '1028',
+        # 'HOST': 'localhost',
+        'PASSWORD': '334132462',
+        'HOST': '123.206.72.211',
         'PORT': '3306',
 
     }
