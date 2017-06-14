@@ -20,7 +20,7 @@ def show_work(request):
             temp_list.append(work.wHours)
             temp_list.append(work.wOvertime)
         list.append(temp_list)
-    return render_to_response('show.html', {'posts': list},
+    return render_to_response('show_work.html', {'posts': list},
                                             RequestContext(request))
 
 def show_salary(request):#这里面要定义好各个内容对应的工资部分
@@ -42,7 +42,7 @@ def show_salary(request):#这里面要定义好各个内容对应的工资部分
             temp_list.append(salary.sSubsidy)
             temp_list.append(salary.sTotal)
         list.append(temp_list)
-    return render_to_response('input.html', {'posts': list},
+    return render_to_response('show_salary.html', {'posts': list},
                               RequestContext(request))
 
 def show_payment(request):
@@ -53,8 +53,8 @@ def show_payment(request):
         pNumber = request.POST.get('pNumber')
         providers = Provider.objects.filter(pNumber = pNumber)
         list = sub_showpayment(providers)
-    return render_to_response('', {'posts': list},
-                              RequestContext(request))  # 填对应的html
+    return render_to_response('show_payment.html', {'posts': list},
+                              RequestContext(request))
 
 def show_produce(request):#输入date和可选项class
     cNumber = request.POST.get('cNumber')
@@ -65,8 +65,8 @@ def show_produce(request):#输入date和可选项class
     else:
         classes = Class.objects.filter(cNumber = cNumber)
         list = sub_showproduce(classes, date)
-    return render_to_response('', {'posts': list},
-                              RequestContext(request))  # 填对应的html
+    return render_to_response('show_produce.html', {'posts': list},
+                              RequestContext(request))
 
 def show_product_lead(request):#输入产品号和日期
     pNumber = request.POST.get('pNumber')
@@ -87,11 +87,11 @@ def show_product_lead(request):#输入产品号和日期
                 temp_list.append(class_in.cType)
                 temp_list.append(pName)
             list.append(temp_list)
-    return render_to_response('', {'posts': list},
-                              RequestContext(request))  # 填对应的html
+    return render_to_response('show_product_lead.html', {'posts': list},
+                              RequestContext(request))
 
 def show_outrate(request):
-    date= request.POST.GET('pDate')
+    date= request.POST.get('pDate') #"GET"要小写成"get"
     produces = Produce.objects.filter(pDate = date)
     list = []
     list_material = []
@@ -126,8 +126,8 @@ def show_outrate(request):
     list.append(list_wrap)
     list.append(list_rice)
     list.append(list_product)
-    return render_to_response('', {'posts': list},
-                              RequestContext(request))  # 填对应的html
+    return render_to_response('show_outrate.html', {'posts': list},
+                              RequestContext(request))
 
 
 def position_salary(position):
@@ -151,7 +151,7 @@ def sub_showpayment(providers):
         for material in materials:
             temp_list1 = []
             usages = Usage.objects.filter(mNumber=material.mNumber)
-            for usage in usages[:-1]:
+            for usage in usages[::-1]:
                 temp_list1.append(provider.pNumber)
                 temp_list1.append(provider.pName)
                 temp_list1.append(material.mNumber)
@@ -179,7 +179,7 @@ def sub_showproduce(classes, date):
                     temp_list.append(product.pName)
                     temp_list.append(produce.pNumber)
                 break;
-        list.append(temp_list)
+            list.append(temp_list)
     return list;
 
 def check_work(employee, date):

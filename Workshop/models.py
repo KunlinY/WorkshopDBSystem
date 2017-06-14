@@ -112,7 +112,7 @@ class Product(models.Model):
         primary_key=True, verbose_name='产品号', db_index=True
     )
     pName = models.CharField(
-        max_length=50, verbose_name='产品名'
+        max_length=20, verbose_name='产品名'
     )
 
     class Meta:
@@ -150,7 +150,7 @@ class Provider(models.Model):
         primary_key=True, verbose_name='供应商号', db_index=True
     )
     pName = models.CharField(
-        max_length=50, verbose_name='供应商名'
+        max_length=20, verbose_name='供应商名'
     )
 
     class Meta:
@@ -173,7 +173,7 @@ class Material(models.Model):
         Depot, verbose_name='仓库号'
     )
     dName = models.CharField(
-        max_length=50, verbose_name='原料名'
+        max_length=20, verbose_name='原料名'
     )
     dPrice = models.FloatField(
         verbose_name='原料单价', validators=[validate_num]

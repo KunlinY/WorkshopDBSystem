@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}产量查询{% endblock %}
+{% block content %}
+<form action="/show_produce/" method="post">
+<input type=text name=cNumber>
+    <br>
+<input type=text name=pDate>
+    <br>
+    <input type=submit>
+</form>
+{% for i in posts %}
+<tr>
+    {% for j in i %}
+    <td>{{j}}</td>
+    {% endfor %}
+</tr>
+{% endfor %}
+<br>
+{% endblock %}

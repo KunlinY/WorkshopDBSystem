@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}供应商结算查询{% endblock %}
+{% block content %}
+<form action="/show_payment/" method="post">
+<input type=text name=pNumber>
+    <br>
+    <input type=submit>
+</form>
+{% for i in posts %}
+<tr>
+    {% for j in i %}
+    <td>{{j}}</td>
+    {% endfor %}
+</tr>
+{% endfor %}
+<br>
+{% endblock %}

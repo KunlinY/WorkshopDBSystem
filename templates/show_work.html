@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}考勤记录查询{% endblock %}
+{% block content %}
+<form action="/show_work/" method="post">
+<input type=text name=cNumber>
+    <br>
+    <input type=submit>
+</form>
+{% for i in posts %}
+<tr>
+    {% for j in i %}
+    <td>{{j}}</td>
+    {% endfor %}
+</tr>
+{% endfor %}
+<br>
+{% endblock %}
