@@ -102,7 +102,8 @@ def show_outrate(request):
     list_rice = []
     list_product = []
     for produce in produces:
-        classes = Class.objects.filter(cNumber = produce.cNumber)
+        print(type(produce.cNumber.cNumber))
+        classes = Class.objects.filter(cNumber=produce.cNumber.cNumber)
         for class_in in classes:
             if(class_in.cType == '原料组'):
                 list_material.append(detail(produce, class_in, date))
@@ -170,7 +171,7 @@ def sub_showproduce(classes, date):
         produces = Produce.objects.filter(cNumber = class_in.cNumber, pDate = date)
         for produce in produces:
             temp_list = []
-            products = Product.objects.filter(pNumber = produce.pNumber)
+            products = Product.objects.filter(pNumber = produce.pNumber.pNumber)
             for product in products:
                 temp_list.append(class_in.cNumber)
                 temp_list.append(class_in.cType)
@@ -193,7 +194,6 @@ def check_work(employee, date):
 def detail(produce, class_in, date):
     list = []
     list.append(class_in.cNumber)
-    list.append(class_in.cName)
     list.append(class_in.cType)
     list.append(produce.pUsed)
     list.append(produce.pWeight)
