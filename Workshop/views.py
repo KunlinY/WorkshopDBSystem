@@ -4,7 +4,8 @@ from Workshop.models import *
 from django.template import RequestContext
 import datetime
 
-#接受用户表单查询相应班组员工的考勤记录
+
+# 接受用户表单查询相应班组员工的考勤记录
 def show_work(request):
     cNumber = request.POST.get('cNumber')
     employees = Employee.objects.filter(cNumber = cNumber)
@@ -20,10 +21,11 @@ def show_work(request):
             temp_list.append(work.wHours)
             temp_list.append(work.wOvertime)
         list.append(temp_list)
-    return render_to_response('show_work.html', {'posts': list},
-                                            RequestContext(request))
+    return render_to_response('show_work.html', {'posts': list}, RequestContext(request))
 
-def show_salary(request):#这里面要定义好各个内容对应的工资部分
+
+# 这里面要定义好各个内容对应的工资部分
+def show_salary(request):
     cNumber = request.POST.get('cNumber')
     class_type = Class.objects.filter(cNumber = cNumber)
     employees = Employee.objects.filter(cNumber = cNumber)
@@ -45,6 +47,7 @@ def show_salary(request):#这里面要定义好各个内容对应的工资部分
     return render_to_response('show_salary.html', {'posts': list},
                               RequestContext(request))
 
+
 def show_payment(request):
     if request.method != 'POST':
         providers = Provider.objects.all()
@@ -55,6 +58,7 @@ def show_payment(request):
         list = sub_showpayment(providers)
     return render_to_response('show_payment.html', {'posts': list},
                               RequestContext(request))
+
 
 def show_produce(request):#输入date和可选项class
     cNumber = request.POST.get('cNumber')
@@ -67,6 +71,7 @@ def show_produce(request):#输入date和可选项class
         list = sub_showproduce(classes, date)
     return render_to_response('show_produce.html', {'posts': list},
                               RequestContext(request))
+
 
 def show_product_lead(request):#输入产品号和日期
     pNumber = request.POST.get('pNumber')
@@ -89,6 +94,7 @@ def show_product_lead(request):#输入产品号和日期
             list.append(temp_list)
     return render_to_response('show_product_lead.html', {'posts': list},
                               RequestContext(request))
+
 
 def show_outrate(request):
     date= request.POST.get('pDate') #"GET"要小写成"get"
@@ -132,17 +138,19 @@ def show_outrate(request):
 
 
 def position_salary(position):
-    if(position=='无'):
+    if position == '无':
         return 0
-    elif(position=='车间主任'):
+    elif position == '车间主任':
         return 2000
-    elif(position=='车间管理人员'):
+    elif position == '车间管理人员' :
         return 1000
     else:
         return 500
 
-def work_year(time,dtime):
+
+def work_year(time, dtime):
     return (time-dtime).year
+
 
 def sub_showpayment(providers):
     list = []
@@ -160,10 +168,11 @@ def sub_showpayment(providers):
                 temp_list1.append(material.dPrice)
                 temp_list1.append(Usage.uDate)
                 temp_list1.append(Usage.uAmount)
-                break;
+                break
             temp_list2.append(temp_list1)
         list.append(temp_list2)
     return list
+
 
 def sub_showproduce(classes, date):
     list = []
@@ -176,20 +185,22 @@ def sub_showproduce(classes, date):
                 temp_list.append(class_in.cNumber)
                 temp_list.append(class_in.cType)
                 temp_list.append(produce.pWeight)
-                if(class_in.cType == '产品组'):
+                if class_in.cType == '产品组':
                     temp_list.append(product.pName)
                     temp_list.append(produce.pNumber)
-                break;
+                break
             list.append(temp_list)
-    return list;
+    return list
+
 
 def check_work(employee, date):
     flag = 0
     works = Work.objects.filter(eNumber = employee.eNumber)
     for work in works:
         flag = 1
-        break;
+        break
     return flag
+
 
 def detail(produce, class_in, date):
     list = []
