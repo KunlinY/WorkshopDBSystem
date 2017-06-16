@@ -19,7 +19,7 @@ class Shop(models.Model):
         verbose_name_plural = verbose_name
 
     def __str__(self):
-        return '车间%s' % self.sNumber
+        return '车间 %s' % self.sNumber
 
 
 class Class(models.Model):
@@ -48,7 +48,7 @@ class Class(models.Model):
         verbose_name_plural = verbose_name
 
     def __str__(self):
-        return '班组%s' % self.cNumber
+        return '班组 %s' % self.cNumber
 
 
 class Employee(models.Model):

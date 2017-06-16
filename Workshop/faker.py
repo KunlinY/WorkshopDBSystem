@@ -8,7 +8,7 @@ worker = 0
 
 
 def employee():
-    query = "insert into workshop_employee" \
+    query = "insert into Workshop_employee" \
           "(eName, eSex, eAge, position, way, techGrading, dateOfAdmission, cNumber_id) " \
           "values" \
           "('{}', '{}', {}, '{}', '{}', '{}', '{}', {});\n"
@@ -69,7 +69,7 @@ def employee():
 
 
 def work():
-    query = "insert into workshop_work" \
+    query = "insert into Workshop_work" \
             "(wDate, wHours, wOvertime, eNumber_id)" \
             "values" \
             "('{}', {}, {}, {});\n"
@@ -102,7 +102,7 @@ def work():
 
 
 def depot():
-    query = "insert into workshop_depot" \
+    query = "insert into Workshop_depot" \
             "(dType)" \
             "values" \
             "('{}');\n"
@@ -113,7 +113,7 @@ def depot():
 
 
 def provider():
-    query = "insert into workshop_provider" \
+    query = "insert into Workshop_provider" \
             "(pName)" \
             "values" \
             "('{}');\n"
@@ -125,7 +125,7 @@ def provider():
 
 
 def product():
-    query = "insert into workshop_product" \
+    query = "insert into Workshop_product" \
             "(pName)" \
             "values" \
             "('{}');\n"
@@ -137,7 +137,7 @@ def product():
 
 
 def material():
-    query = "insert into workshop_material" \
+    query = "insert into Workshop_material" \
             "(pNumber_id, dNumber_id, dName, dPrice)" \
             "values" \
             "({}, {}, '{}', {});\n"
@@ -152,7 +152,7 @@ def material():
 
 
 def usage():
-    query = "insert into workshop_usage" \
+    query = "insert into Workshop_usage" \
             "(cNumber_id, mNumber_id, uDate, uAmount)" \
             "values" \
             "({}, {}, '{}', {});\n"
@@ -175,7 +175,7 @@ def usage():
 
 
 def produce():
-    query = "insert into workshop_produce" \
+    query = "insert into Workshop_produce" \
             "(cNumber_id, pNumber_id, dNumber_id, pDate, pWeight, pUsed)" \
             "values" \
             "({}, {}, {}, '{}', {}, {});\n"
