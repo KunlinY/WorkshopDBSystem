@@ -134,7 +134,7 @@ DATE_FORMAT = 'Y-m-d'
 STATIC_URL = '/static/'
 
 SUIT_CONFIG = {
-    'ADMIN_NAME': '高铁盒饭生产管理系统',
+    'ADMIN_NAME': '高铁餐饮生产管理系统',
     'LIST_PER_PAGE': 20,
     'MENU_OPEN_FIRST_CHILD': False,
     'MENU': (

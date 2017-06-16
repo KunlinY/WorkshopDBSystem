@@ -11,13 +11,13 @@ class ShopAdmin(admin.ModelAdmin):
         return ['sNumber']
 
     def get_search_results(self, request, queryset, search_term):
-        queryset, use_distinct = super(ShopAdmin, self).get_search_results(request, queryset,search_term)
+        queryset, use_distinct = super(ShopAdmin, self).get_search_results(request, queryset, search_term)
         return queryset, use_distinct
 
 
 class ClassAdmin(admin.ModelAdmin):
     list_display = ('cNumber', 'cType', 'sNumber')
-    search_fields = ('cNumber', 'cType', 'sNumber')
+    search_fields = ('cNumber', 'cType', 'sNumber__sNumber')
 
     def get_list_display(self, request):
         return ['cNumber', 'cType', 'sNumber']
@@ -30,7 +30,7 @@ class ClassAdmin(admin.ModelAdmin):
 
 class EmployeeAdmin(admin.ModelAdmin):
     list_display = ('eNumber', 'eName', 'eSex', 'eAge', 'position', 'cNumber', 'way', 'techGrading', 'dateOfAdmission')
-    search_fields = ('eNumber', 'eName', 'eAge')
+    search_fields = ('eNumber', 'eName', 'eAge', 'position')
 
     def get_list_display(self, request):
         return ['eNumber', 'eName', 'eSex', 'eAge', 'position', 'cNumber', 'way', 'techGrading', 'dateOfAdmission']
@@ -78,7 +78,7 @@ class ProviderAdmin(admin.ModelAdmin):
 
 class MaterialAdmin(admin.ModelAdmin):
     list_display = ('mNumber', 'pNumber', 'dNumber', 'dName', 'dPrice')
-    search_fields = ('mNumber', 'pNumber', 'dNumber', 'dName', 'dPrice')
+    search_fields = ('mNumber', 'pNumber__pNumber', 'dNumber__dNumber', 'dName', 'dPrice')
 
     def get_list_display(self, request):
         return ['mNumber', 'pNumber', 'dNumber', 'dName', 'dPrice']
@@ -90,7 +90,7 @@ class MaterialAdmin(admin.ModelAdmin):
 
 class WorkAdmin(admin.ModelAdmin):
     list_display = ('eNumber', 'wDate', 'wHours', 'wOvertime')
-    search_fields = ('eNumber', 'wDate', 'wHours', 'wOvertime')
+    search_fields = ('eNumber__eNumber', 'eNumber__eName', 'wDate', 'wHours', 'wOvertime')
 
     def get_list_display(self, request):
         return ['eNumber', 'wDate', 'wHours', 'wOvertime']
@@ -102,7 +102,7 @@ class WorkAdmin(admin.ModelAdmin):
 
 class SalaryAdmin(admin.ModelAdmin):
     list_display = ('eNumber', 'sDate', 'sAmount', 'sSubsidy', 'sTotal')
-    search_fields = ('eNumber', 'sDate', 'sAmount', 'sSubsidy', 'sTotal')
+    search_fields = ('eNumber__eNumber', 'eNumber__eName', 'sDate')
 
     def get_list_display(self, request):
         return ['eNumber', 'sDate', 'sAmount', 'sSubsidy', 'sTotal']
@@ -114,7 +114,7 @@ class SalaryAdmin(admin.ModelAdmin):
 
 class UsageAdmin(admin.ModelAdmin):
     list_display = ('cNumber', 'mNumber', 'uDate', 'uAmount')
-    search_fields = ('cNumber', 'mNumber', 'uDate', 'uAmount')
+    search_fields = ('cNumber__cNumber', 'mNumber__mNumber', 'mNumber__dName', 'uDate', 'uAmount')
 
     def get_list_display(self, request):
         return ['cNumber', 'mNumber', 'uDate', 'uAmount']
@@ -126,7 +126,7 @@ class UsageAdmin(admin.ModelAdmin):
 
 class ProduceAdmin(admin.ModelAdmin):
     list_display = ('cNumber', 'pNumber', 'dNumber', 'pDate', 'pWeight', 'pUsed')
-    search_fields = ('cNumber', 'pNumber', 'dNumber', 'pDate', 'pWeight', 'pUsed')
+    search_fields = ('cNumber__cNumber', 'pNumber__pNumber', 'pNumber__pName', 'dNumber', 'pDate')
 
     def get_list_display(self, request):
         return ['cNumber', 'pNumber', 'dNumber', 'pDate', 'pWeight', 'pUsed']
@@ -135,16 +135,16 @@ class ProduceAdmin(admin.ModelAdmin):
         queryset, use_distinct = super(ProduceAdmin, self).get_search_results(request, queryset, search_term)
         return queryset, use_distinct
 
-admin.site.register(models.Shop)
-admin.site.register(models.Class)
-admin.site.register(models.Employee)
-admin.site.register(models.Product)
-admin.site.register(models.Depot)
-admin.site.register(models.Provider)
-admin.site.register(models.Material)
-admin.site.register(models.Work)
-admin.site.register(models.Salary)
-admin.site.register(models.Usage)
-admin.site.register(models.Produce)
+admin.site.register(models.Shop, ShopAdmin)
+admin.site.register(models.Class, ClassAdmin)
+admin.site.register(models.Employee, EmployeeAdmin)
+admin.site.register(models.Product, ProductAdmin)
+admin.site.register(models.Depot, DepotAdmin)
+admin.site.register(models.Provider, ProviderAdmin)
+admin.site.register(models.Material, MaterialAdmin)
+admin.site.register(models.Work, WorkAdmin)
+admin.site.register(models.Salary, SalaryAdmin)
+admin.site.register(models.Usage, UsageAdmin)
+admin.site.register(models.Produce, ProduceAdmin)
 
 
