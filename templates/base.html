@@ -1,19 +1,17 @@
 <html>
-<head>
-	<meta charset="UTF-8">
-	<title>{% block title %}{% endblock %}</title>
-</head>
-      <style type="text/css">
-        body{color:#efd;background:#453;padding:0 5em;margin:0}
-        h1{padding:2em 1em;background:#675}
-        h2{color:#bf8;border-top:1px dotted #fff;margin-top:2em}
-        p{margin:1em 0}
-      </style>
-     
-      <body>
-        <h1>虫师blog</h1>
-        <h3>大人不华，君子务实</h3>
-        {% block content %}
-        {% endblock %}
-      </body>
+  <head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'WorkshopDBSystem/css/base.css' %}" type="text/css"></link>
+    <link rel="stylesheet" href="{% static 'WorkshopDBSystem/css/basictable.css' %}" type="text/css"></link>
+    <script type="text/javascript" src="{% static 'WorkshopDBSystem/js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'WorkshopDBSystem/js/jquery.basictable.min.js' %}"></script>  
+  </head>
+  <body>
+    <h1>{% block sname %}{% endblock %}</h1>
+    <h3>{% block sinfo %}{% endblock %}</h3>
+    {% block content %}
+    {% endblock %}
+  </body>
 </html>

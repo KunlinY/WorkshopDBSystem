@@ -1,17 +1,23 @@
 {% extends "base.html" %}
 {% block title %}考勤记录查询{% endblock %}
+{% block sname %}考勤记录查询{% endblock %}
+{% block sinfo %}请输入想要查询的班组号{% endblock %}
 {% block content %}
 <form action="/show_work/" method="post">
 <input type=text name=cNumber>
     <br>
     <input type=submit>
 </form>
+<table id="table">
 {% for i in posts %}
+
+<tbody>
 <tr>
     {% for j in i %}
     <td>{{j}}</td>
     {% endfor %}
 </tr>
+</tbody>
 {% endfor %}
-<br>
+</table>
 {% endblock %}

@@ -133,6 +133,12 @@ DATE_FORMAT = 'Y-m-d'
 
 STATIC_URL = '/static/'
 
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
+#suit config
+
 SUIT_CONFIG = {
     'ADMIN_NAME': '高铁餐饮生产管理系统',
     'LIST_PER_PAGE': 20,

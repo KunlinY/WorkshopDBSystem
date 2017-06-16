@@ -1,17 +1,32 @@
 {% extends "base.html" %}
 {% block title %}出成率查询{% endblock %}
+{% block sname %}出成率查询{% endblock %}
+{% block sinfo %}请输入想要查询的日期{% endblock %}
 {% block content %}
 <form action="/show_outrate/" method="post">
 <input type=text name=pDate>
     <br>
     <input type=submit>
 </form>
+<table id="table">
+  <thead>
+    <tr>
+      <th>编号</th>
+      <th>组名</th>
+      <th>原料</th>
+      <th>产品</th>
+      <th>出成率</th>
+    </tr>
+  </thead>
 {% for i in posts %}
+
 <tr>
     {% for j in i %}
-    <td>{{j}}</td>
+    	{% for k in j %}
+    		<td>{{k}}</td>
+    	{% endfor %}
     {% endfor %}
 </tr>
 {% endfor %}
-<br>
+</table>
 {% endblock %}
