@@ -14,13 +14,14 @@ def show_work(request):
     for employee in employees:
         works = Work.objects.filter(eNumber = employee.eNumber)
         temp_list = []
-        temp_list.append(employee.eNumber)
-        temp_list.append(employee.eName)
         for work in works:
+            temp_list.append(employee.eNumber)
+            temp_list.append(employee.eName)
             temp_list.append(work.wDate)
             temp_list.append(work.wHours)
             temp_list.append(work.wOvertime)
-        list.append(temp_list)
+            list.append(temp_list)
+
     return render_to_response('show_work.html', {'posts': list}, RequestContext(request))
 
 
@@ -279,3 +280,6 @@ def detail(produce, class_in, date):
     list.append(produce.pWeight)
     list.append((1.0 * produce.pWeight/produce.pUsed))
     return list
+
+def index(request):
+    return render_to_response("index.html")

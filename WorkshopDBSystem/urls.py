@@ -26,5 +26,5 @@ urlpatterns = [
     url(r'^show_produce/', Workshop.views.show_produce),
     url(r'^show_product_lead/', Workshop.views.show_product_lead),
     url(r'^show_outrate/', Workshop.views.show_outrate),
-    url(r'^update_salary/', Workshop.views.update_salary)
+    url(r'^index/', Workshop.views.index),
 ]

@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>高铁餐饮</title>
+    {% load staticfiles %}
+    <!-- load stylesheets -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">  
+    <!-- Google web font "Open Sans" -->
+    <link rel="stylesheet" href="{% static 'WorkshopDBSystem/fonts/font-awesome-4.5.0/css/font-awesome.min.css' %}">                
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{% static 'WorkshopDBSystem/css/bootstrap.min.css' %}">                                      
+    <!-- Bootstrap style -->
+    <link rel="stylesheet" href="{% static 'WorkshopDBSystem/css/hero-slider-style.css' %}">                              
+    <!-- Hero slider style (https://codyhouse.co/gem/hero-slider/) -->
+    <link rel="stylesheet" href="{% static 'WorkshopDBSystem/css/magnific-popup.css' %}">                                 
+    <!-- Magnific popup style (http://dimsemenov.com/plugins/magnific-popup/) -->
+    <link rel="stylesheet" href="{% static 'WorkshopDBSystem/css/templatemo-style.css' %}">                                   
+    <!-- Templatemo style -->
+        <!-- load JS files -->
+    <script type="text/javascript" src="{% static 'WorkshopDBSystem/js/jquery-1.11.3.min.js' %}"></script>         <!-- jQuery (https://jquery.com/download/) -->
+    <script type="text/javascript" src="{% static 'WorkshopDBSystem/js/tether.min.js' %}"></script> <!-- Tether for Bootstrap (http://stackoverflow.com/questions/34567939/how-to-fix-the-error-error-bootstrap-tooltips-require-tether-http-github-h) --> 
+    <script type="text/javascript" src="{% static 'WorkshopDBSystem/js/bootstrap.min.js' %}"></script>             <!-- Bootstrap js (v4-alpha.getbootstrap.com/) -->
+    <script type="text/javascript" src="{% static 'WorkshopDBSystem/js/hero-slider-main.js' %}"></script>          <!-- Hero slider (https://codyhouse.co/gem/hero-slider/) -->
+    <script type="text/javascript" src="{% static 'WorkshopDBSystem/js/jquery.magnific-popup.min.js' %}"></script> <!-- Magnific popup (http://dimsemenov.com/plugins/magnific-popup/) -->
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+          <![endif]-->
+</head>
+
+    <body>
+        
+        <!-- Content -->
+        <div class="cd-hero">
+
+            <!-- Navigation -->        
+            <div class="cd-slider-nav">
+                <nav class="navbar">
+                    <div class="tm-navbar-bg">
+                        <a class="navbar-brand text-uppercase" href="../admin"><i class="fa fa-flash tm-brand-icon"></i>高铁餐饮</a>
+
+                        <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#tmNavbar">
+                            &#9776;
+                        </button>
+                        <div class="collapse navbar-toggleable-md text-xs-center text-uppercase tm-navbar" id="tmNavbar">
+                            <ul class="nav navbar-nav">
+                                <li class="nav-item active selected">
+                                    <a class="nav-link" href="#0" data-no="1">主页 <span class="sr-only">(current)</span></a>
+                                </li>                                
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#0" data-no="2">系统简介</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#0" data-no="3">考勤</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#0" data-no="4">工资</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#0" data-no="5">结算</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#0" data-no="6">生产</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#0" data-no="7">产品追踪</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#0" data-no="8">出成率</a>
+                                </li>
+                            </ul>
+                        </div>         
+                    </div>
+
+                </nav>
+            </div> 
+
+            <ul class="cd-hero-slider">
+
+                <!-- Page 1 Home -->
+                <li class="selected">
+                    <div class="cd-full-width">
+                        <div class="container-fluid js-tm-page-content tm-page-pad" data-page-no="1">
+                            <div class="row">
+                                    <div class="tm-3-col-container">                                        
+                                            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 tm-3-col-textbox">
+                                                <div class="text-xs-left tm-textbox tm-textbox-padding tm-bg-white-translucent tm-3-col-textbox-inner">
+                                                    <i class="fa fa-4x fa-pagelines tm-home-fa"></i>
+                                                    <h2 class="tm-text-title">公司简介</h2>                                           
+                                                    <p class="tm-text">本公司是一家专注于为高铁旅客提供优质餐饮服务的公司，拥有高度自动化的生产线，管理严格，使得乘客可以在旅途中享用健康美味的食品。</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 tm-3-col-textbox">
+                                                <div class="text-xs-left tm-textbox tm-textbox-padding tm-bg-white-translucent tm-3-col-textbox-inner">
+                                                    <i class="fa fa-4x fa-bicycle tm-home-fa"></i>
+                                                    <h2 class="tm-text-title">主要产品</h2>
+                                                    <p class="tm-text">本公司生产各种即食盒饭套餐，按照所用食材分为多个价位，主要有西红柿鸡蛋盖饭、红烧狮子头盖饭、土豆牛肉盖饭、小炒肉套餐等。</p>
+                                                </div>          
+                                            </div>
+                                            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 tm-3-col-textbox">
+                                                <div class="text-xs-left tm-textbox tm-textbox-padding tm-bg-white-translucent tm-3-col-textbox-inner">
+                                                    <i class="fa fa-4x fa-plane tm-home-fa"></i>
+                                                    <h2 class="tm-text-title">产品优势</h2>
+                                                    <p class="tm-text">本公司在原料采购上与中粮集团合作，在产地上保证优质，在时间上保证新鲜。生产设备均采用德国原装进口设备，在多个环节把控质量。</p>
+                                                </div>          
+                                            </div>                                        
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                
+                <li>
+                    <div class="cd-full-width">
+                        <div class="container-fluid js-tm-page-content tm-page-width" data-page-no="2">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="tm-flex">
+                                        <div class="tm-bg-white-translucent text-xs-left tm-textbox tm-textbox-padding tm-white-box-margin-b">
+                                            <h2 class="tm-text-title">系统简介</h2>
+                                            <p class="tm-text">本系统名称为「高铁餐饮生产管理系统」，基于MySQL数据库，内有150万条数据，使用ORM框架管理，查询、修改数据均十分高效简便，同时采用多种措施提高内外部安全性，能够防范SQL注入等常见攻击手段。为满足客户实际需要，系统能够按客户要求生成多张报表，包括工资表、考勤表、产品追踪表等。</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="tm-flex">
+                                        <div class="tm-bg-white-translucent text-xs-left tm-textbox tm-2-col-textbox-2 tm-textbox-padding">
+                                            <h2 class="tm-text-title">系统特色</h2>
+                                            <p class="tm-text">本系统查询速度快，后台界面简洁美观，便于操作，能够提供不同安全等级的访问。同时能够生成多张报表。</p>
+                                        </div>
+                                        <div class="tm-bg-white-translucent text-xs-left tm-textbox tm-2-col-textbox-2 tm-textbox-padding">
+                                            <h2 class="tm-text-title">主要方法</h2>
+                                            <p class="tm-text">搭建本系统主要使用的方法与工具有：MySQL，ORM，HTML5，CSS3，JS等</p>     
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                        
+                        </div>              
+                    </div> <!-- .cd-full-width -->
+
+                </li>
+
+                <!-- Page 2 Gallery One -->
+                <li>                    
+                    <div class="cd-full-width">
+                        <div class="container-fluid js-tm-page-content" data-page-no="3" data-page-type="gallery">
+                            <div class="tm-img-gallery-container">
+                                <div class="tm-flex">
+                                        <div class="tm-bg-white-translucent text-xs-left tm-textbox tm-textbox-padding tm-white-box-margin-b">
+                                            <h2 class="tm-text-title">考勤</h2>
+                                            <p class="tm-text">Nulla efficitur, ligula et imperdiet volutpat, lacus tortor tempus massa, eget tempus quam nibh vel nulla. Vivamus non molestie leo, non tincidunt diam. Mauris sagittis elit in velit ultricies aliquet sed in magna. Pellentesque semper, est nec consequat viverra, sem augue tincidunt nisi, a posuere nisi sapien sed sapien. Nulla facilisi.</p>
+                                            <a href="/show_work">点击进入报表查询界面</a>
+                                        </div>
+                                    </div>                                 
+                            </div>
+                        </div>                                                    
+                    </div>                    
+                </li>
+
+                <!-- Page 3 Gallery Two -->
+                <li>                    
+                    <div class="cd-full-width">
+                        <div class="container-fluid js-tm-page-content" data-page-no="4" data-page-type="gallery">
+                            <div class="tm-img-gallery-container tm-img-gallery-container-2">
+                                <div class="tm-flex">
+                                        <div class="tm-bg-white-translucent text-xs-left tm-textbox tm-textbox-padding tm-white-box-margin-b">
+                                            <h2 class="tm-text-title">工资</h2>
+                                            <p class="tm-text">Nulla efficitur, ligula et imperdiet volutpat, lacus tortor tempus massa, eget tempus quam nibh vel nulla. Vivamus non molestie leo, non tincidunt diam. Mauris sagittis elit in velit ultricies aliquet sed in magna. Pellentesque semper, est nec consequat viverra, sem augue tincidunt nisi, a posuere nisi sapien sed sapien. Nulla facilisi.</p>
+                                            <a href="/show_salary">点击进入报表查询界面</a>
+                                        </div>
+                                    </div>                                 
+                            </div>
+                        </div>                      
+                    </div>
+                </li>
+
+                <!-- Page 4 Gallery Three -->
+                <li>
+                    <div class="cd-full-width">
+                        <div class="container-fluid js-tm-page-content" data-page-no="5" data-page-type="gallery">                        
+                            <div class="tm-img-gallery-container tm-img-gallery-container-3">
+                                <div class="tm-flex">
+                                        <div class="tm-bg-white-translucent text-xs-left tm-textbox tm-textbox-padding tm-white-box-margin-b">
+                                            <h2 class="tm-text-title">结算</h2>
+                                            <p class="tm-text">Nulla efficitur, ligula et imperdiet volutpat, lacus tortor tempus massa, eget tempus quam nibh vel nulla. Vivamus non molestie leo, non tincidunt diam. Mauris sagittis elit in velit ultricies aliquet sed in magna. Pellentesque semper, est nec consequat viverra, sem augue tincidunt nisi, a posuere nisi sapien sed sapien. Nulla facilisi.</p>
+                                            <a href="/show_payment">点击进入报表查询界面</a>
+                                        </div>
+                                    </div>                                
+                            </div> <!-- .tm-img-gallery-container -->
+                        </div>         
+                    </div>  
+                </li>
+
+                <!-- Page 5 About -->
+                <li>                    
+                    <div class="cd-full-width">
+                        <div class="container-fluid js-tm-page-content" data-page-no="6" data-page-type="gallery">
+                            <div class="tm-img-gallery-container tm-img-gallery-container-2">
+                                <div class="tm-flex">
+                                        <div class="tm-bg-white-translucent text-xs-left tm-textbox tm-textbox-padding tm-white-box-margin-b">
+                                            <h2 class="tm-text-title">生产</h2>
+                                            <p class="tm-text">Nulla efficitur, ligula et imperdiet volutpat, lacus tortor tempus massa, eget tempus quam nibh vel nulla. Vivamus non molestie leo, non tincidunt diam. Mauris sagittis elit in velit ultricies aliquet sed in magna. Pellentesque semper, est nec consequat viverra, sem augue tincidunt nisi, a posuere nisi sapien sed sapien. Nulla facilisi.</p>
+                                            <a href="/show_produce">点击进入报表查询界面</a>
+                                        </div>
+                                    </div>                              
+                            </div>
+                        </div>                      
+                    </div>
+                </li>
+
+                                <li>                    
+                    <div class="cd-full-width">
+                        <div class="container-fluid js-tm-page-content" data-page-no="7" data-page-type="gallery">
+                            <div class="tm-img-gallery-container tm-img-gallery-container-2">
+                                <div class="tm-flex">
+                                        <div class="tm-bg-white-translucent text-xs-left tm-textbox tm-textbox-padding tm-white-box-margin-b">
+                                            <h2 class="tm-text-title">产品追踪</h2>
+                                            <p class="tm-text">Nulla efficitur, ligula et imperdiet volutpat, lacus tortor tempus massa, eget tempus quam nibh vel nulla. Vivamus non molestie leo, non tincidunt diam. Mauris sagittis elit in velit ultricies aliquet sed in magna. Pellentesque semper, est nec consequat viverra, sem augue tincidunt nisi, a posuere nisi sapien sed sapien. Nulla facilisi.</p>
+                                            <a href="/show_product_lead">点击进入报表查询界面</a>
+                                        </div>
+                                    </div>                                 
+                            </div>
+                        </div>                      
+                    </div>
+                </li>
+
+                                <li>                    
+                    <div class="cd-full-width">
+                        <div class="container-fluid js-tm-page-content" data-page-no="8" data-page-type="gallery">
+                            <div class="tm-img-gallery-container tm-img-gallery-container-2">
+                                <div class="tm-flex">
+                                        <div class="tm-bg-white-translucent text-xs-left tm-textbox tm-textbox-padding tm-white-box-margin-b">
+                                            <h2 class="tm-text-title">出成率</h2>
+                                            <p class="tm-text">Nulla efficitur, ligula et imperdiet volutpat, lacus tortor tempus massa, eget tempus quam nibh vel nulla. Vivamus non molestie leo, non tincidunt diam. Mauris sagittis elit in velit ultricies aliquet sed in magna. Pellentesque semper, est nec consequat viverra, sem augue tincidunt nisi, a posuere nisi sapien sed sapien. Nulla facilisi.</p>
+                                            <a href="/show_outrate">点击进入报表查询界面</a>
+                                        </div>
+                                    </div>                          
+                            </div>
+                        </div>                      
+                    </div>
+                </li>
+
+
+            </ul> <!-- .cd-hero-slider -->
+            
+            <footer class="tm-footer">
+            
+                <div class="tm-social-icons-container text-xs-center" style="height:35px">
+                </div>
+                
+                <p class="tm-copyright-text">Copyright &copy; 2017 高铁餐饮
+                </p>
+
+            </footer>
+                    
+        </div> <!-- .cd-hero -->
+        
+
+        <!-- Preloader, https://ihatetomatoes.net/create-custom-preloading-screen/ -->
+        <div id="loader-wrapper">
+            
+            <div id="loader"></div>
+            <div class="loader-section section-left"></div>
+            <div class="loader-section section-right"></div>
+
+        </div>
+        
+
+        
+        <script>
+
+            function adjustHeightOfPage(pageNo) {
+
+                var offset = 80;
+                var pageContentHeight = 0;
+
+                var pageType = $('div[data-page-no="' + pageNo + '"]').data("page-type");
+
+                if( pageType != undefined && pageType == "gallery") {
+                    pageContentHeight = $(".cd-hero-slider li:nth-of-type(" + pageNo + ") .tm-img-gallery-container").height();
+                }
+                else {
+                    pageContentHeight = $(".cd-hero-slider li:nth-of-type(" + pageNo + ") .js-tm-page-content").height();
+                }
+
+                if($(window).width() >= 992) { offset = 120; }
+                else if($(window).width() < 480) { offset = 40; }
+               
+                // Get the page height
+                var totalPageHeight = 15 + $('.cd-slider-nav').height()
+                                        + pageContentHeight + offset
+                                        + $('.tm-footer').height();
+
+                // Adjust layout based on page height and window height
+                if(totalPageHeight > $(window).height()) 
+                {
+                    $('.cd-hero-slider').addClass('small-screen');
+                    $('.cd-hero-slider li:nth-of-type(' + pageNo + ')').css("min-height", totalPageHeight + "px");
+                }
+                else 
+                {
+                    $('.cd-hero-slider').removeClass('small-screen');
+                    $('.cd-hero-slider li:nth-of-type(' + pageNo + ')').css("min-height", "100%");
+                }
+            }
+
+            /*
+                Everything is loaded including images.
+            */
+            $(window).load(function(){
+
+                adjustHeightOfPage(1); // Adjust page height
+
+                /* Gallery One pop up
+                -----------------------------------------*/
+                $('.gallery-one').magnificPopup({
+                    delegate: 'a', // child items selector, by clicking on it popup will open
+                    type: 'image',
+                    gallery:{enabled:true}                
+                });
+				
+				/* Gallery Two pop up
+                -----------------------------------------*/
+				$('.gallery-two').magnificPopup({
+                    delegate: 'a',
+                    type: 'image',
+                    gallery:{enabled:true}                
+                });
+
+                /* Gallery Three pop up
+                -----------------------------------------*/
+                $('.gallery-three').magnificPopup({
+                    delegate: 'a',
+                    type: 'image',
+                    gallery:{enabled:true}                
+                });
+
+                /* Collapse menu after click 
+                -----------------------------------------*/
+                $('#tmNavbar a').click(function(){
+                    $('#tmNavbar').collapse('hide');
+
+                    adjustHeightOfPage($(this).data("no")); // Adjust page height       
+                });
+
+                /* Browser resized 
+                -----------------------------------------*/
+                $( window ).resize(function() {
+                    var currentPageNo = $(".cd-hero-slider li.selected .js-tm-page-content").data("page-no");
+                    
+                    // wait 3 seconds
+                    setTimeout(function() {
+                        adjustHeightOfPage( currentPageNo );
+                    }, 1000);
+                    
+                });
+        
+                // Remove preloader (https://ihatetomatoes.net/create-custom-preloading-screen/)
+                $('body').addClass('loaded');
+                           
+            });
+
+           
+
+        </script>            
+
+</body>
+</html>

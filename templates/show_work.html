@@ -8,16 +8,32 @@
     <br>
     <input type=submit>
 </form>
-<table id="table">
-{% for i in posts %}
-
-<tbody>
-<tr>
-    {% for j in i %}
-    <td>{{j}}</td>
-    {% endfor %}
-</tr>
-</tbody>
-{% endfor %}
-</table>
+<label><select name="dataTables-example_length" aria-controls="dataTables-example" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> records per page</label>
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                 Advanced Tables
+            </div>
+            <table id="table">
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                        <tbody>
+                        	{% for i in posts %}
+                            <tr class="odd gradeX">
+                                {% for j in i %}
+                                <th>{{j}}</th>
+                                {% endfor %}
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                
+            </div>
+        </div>
+        <!--End Advanced Tables -->
+    </div>
+</div>
 {% endblock %}

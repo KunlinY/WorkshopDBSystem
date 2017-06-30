@@ -4,9 +4,16 @@
     <title>{% block title %}{% endblock %}</title>
     {% load staticfiles %}
     <link rel="stylesheet" href="{% static 'WorkshopDBSystem/css/base.css' %}" type="text/css"></link>
-    <link rel="stylesheet" href="{% static 'WorkshopDBSystem/css/basictable.css' %}" type="text/css"></link>
-    <script type="text/javascript" src="{% static 'WorkshopDBSystem/js/jquery.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'WorkshopDBSystem/js/jquery.basictable.min.js' %}"></script>  
+    <link rel="stylesheet" href="{% static 'WorkshopDBSystem/css/bootstrap.css' %}" type="text/css"></link>
+    <link rel="stylesheet" href="{% static 'WorkshopDBSystem/css/font-awesome.css' %}" type="text/css"></link>
+    <link rel="stylesheet" href="{% static 'WorkshopDBSystem/css/style.css' %}" type="text/css"></link>
+    <link rel="stylesheet" href="{% static 'WorkshopDBSystem/js/dataTables/dataTables.bootstrap.css' %}" type="text/css"></link>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' /></link>
+    <script type="text/javascript" src="{% static 'WorkshopDBSystem/js/jquery-1.10.2.js' %}"></script>
+    <script type="text/javascript" src="{% static 'WorkshopDBSystem/js/bootstrap.js' %}"></script>
+    <script type="text/javascript" src="{% static 'WorkshopDBSystem/js/dataTables/jquery.dataTables.js' %}"></script>
+    <script type="text/javascript" src="{% static 'WorkshopDBSystem/js/dataTables/dataTables.bootstrap.js' %}"></script>
+    <script type="text/javascript" src="{% static 'WorkshopDBSystem/js/custom.js' %}"></script>
   </head>
   <body>
     <h1>{% block sname %}{% endblock %}</h1>
