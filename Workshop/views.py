@@ -2,7 +2,7 @@
 from django.shortcuts import render_to_response
 from Workshop.models import *
 from django.template import RequestContext
-import datetime
+from datetime import datetime
 
 
 # 接受用户表单查询相应班组员工的考勤记录
@@ -37,8 +37,7 @@ def show_salary(request):
             temp_list = []
             temp_list.append(employee.eNumber)
             temp_list.append(employee.eName)
-            temp_list.append(work_year(salary.sDate, employee.dateOfAdmission))
-            temp_list.append(position_salary(employee.position))
+            temp_list.append(employee.dateOfAdmission)
             temp_list.append(class_type)
             temp_list.append(salary.sAmount)
             temp_list.append(salary.sSubsidy)
@@ -46,6 +45,54 @@ def show_salary(request):
             list.append(temp_list)
     return render_to_response('show_salary.html', {'posts': list},
                               RequestContext(request))
+
+def update_salary(request):
+    Salary.objects.all().delete()
+    employees = Employee.objects.all()
+    Classes = Class.objects.all()
+    check_list = get_class_info_for_salary(Classes)
+    for employee in employees:
+        cNumber = employee.cNumber.cNumber
+        class_ins = Class.objects.filter(cNumber=cNumber)
+        for class_in in class_ins:
+            class_x = class_in
+            break;
+        produce_amount = find_amount(check_list, cNumber)
+        if class_x.cType=='原料组':
+            init_salary = produce_amount * 300
+        elif class_x.cType=='前处理组':
+            init_salary = produce_amount * 350
+        elif class_x.cType == '热厨组':
+            init_salary = produce_amount * 325
+        elif class_x.cType == '调料组':
+            init_salary = produce_amount * 350
+        elif class_x.cType == '包装组':
+            init_salary = produce_amount * 300
+        elif class_x.cType == '米饭组':
+            init_salary = produce_amount * 250
+        elif class_x.cType == '产品组':
+            init_salary = produce_amount * 200
+        year_salary = (2017 - employee.dateOfAdmission.year) * 100
+        if Work.objects.filter(eNumber = employee.eNumber).count() > 20:
+            work_aside = 1000
+        else:
+            work_aside = 0
+        ISO_date = '{}-{:02}-{:02}'.format(datetime.now().year, datetime.now().month, datetime.now().day)
+        sum_salary = work_aside + init_salary + position_salary(employee.position) +year_salary
+        a = Salary.objects.create(eNumber = employee, sDate = ISO_date, sAmount = produce_amount,sSubsidy = work_aside,
+                                  sTotal = sum_salary)
+        a.save()
+        print(a)
+    return render_to_response('update_salary.html', {'posts': cNumber},
+                                  RequestContext(request))
+
+
+
+
+
+
+
+
 
 
 def show_payment(request):
@@ -147,9 +194,31 @@ def position_salary(position):
     else:
         return 500
 
+def get_class_info_for_salary(Classes):
+    list = []
+    for class_in in Classes:
+        temp_list = []
+        produces = Produce.objects.filter(cNumber=class_in.cNumber)
+        employee_number = Employee.objects.filter(cNumber = class_in.cNumber).count()
+        produce_amount = 0
+        flag = 0
+        for produce in produces:
+            if flag == 30:
+                break
+            produce_amount = produce.pWeight + produce_amount
+            flag = flag + 1
 
-def work_year(time, dtime):
-    return (time-dtime).year
+        produce_amount = produce_amount / employee_number
+        temp_list.append(class_in.cNumber)
+        temp_list.append(produce_amount)
+        list.append(temp_list)
+    return list
+
+def find_amount(check_list, cNumber):
+    for list in check_list:
+        if list[0] == cNumber:
+            return list[1]
+    return 0
 
 
 def sub_showpayment(providers):
