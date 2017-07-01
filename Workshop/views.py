@@ -5,6 +5,9 @@ from django.template import RequestContext
 from datetime import datetime
 
 
+def index(request):
+    return render_to_response('index.html')
+
 # 接受用户表单查询相应班组员工的考勤记录
 def show_work(request):
     cNumber = request.POST.get('cNumber')
@@ -13,8 +16,8 @@ def show_work(request):
     print(cNumber)
     for employee in employees:
         works = Work.objects.filter(eNumber = employee.eNumber)
-        temp_list = []
         for work in works:
+            temp_list = []
             temp_list.append(employee.eNumber)
             temp_list.append(employee.eName)
             temp_list.append(work.wDate)
@@ -39,7 +42,6 @@ def show_salary(request):
             temp_list.append(employee.eNumber)
             temp_list.append(employee.eName)
             temp_list.append(employee.dateOfAdmission)
-            temp_list.append(class_type)
             temp_list.append(salary.sAmount)
             temp_list.append(salary.sSubsidy)
             temp_list.append(salary.sTotal)
@@ -97,13 +99,9 @@ def update_salary(request):
 
 
 def show_payment(request):
-    if request.method != 'POST':
-        providers = Provider.objects.all()
-        list = sub_showpayment(providers)
-    else:
-        pNumber = request.POST.get('pNumber')
-        providers = Provider.objects.filter(pNumber = pNumber)
-        list = sub_showpayment(providers)
+    pNumber = request.POST.get('pNumber')
+    providers = Provider.objects.filter(pNumber = pNumber)
+    list = sub_showpayment(providers)
     return render_to_response('show_payment.html', {'posts': list},
                               RequestContext(request))
 
@@ -124,22 +122,27 @@ def show_produce(request):#输入date和可选项class
 def show_product_lead(request):#输入产品号和日期
     pNumber = request.POST.get('pNumber')
     date = request.POST.get('pDate')
-    classes = Produce.objects.filter(pNumber = pNumber)
+    produces = Produce.objects.filter(pDate = date)
     product = Product.objects.filter(pNumber = pNumber)
+    list = []
     for product_in in product:
         pName = product_in.pName
-    list = []
-    for class_in in classes:
-        employees = Employee.objects.filter(cNmuber = class_in.cNumber)
-        for employee in employees:
-            temp_list = []
-            if(check_work(employee, date)):
-                temp_list.append(employee.eNumber)
-                temp_list.append(employee.eName)
-                temp_list.append(employee.cNumber)
-                temp_list.append(class_in.cType)
-                temp_list.append(pName)
-            list.append(temp_list)
+        break
+    for produce in produces:
+        classes = Class.objects.filter(cNumber=produce.cNumber.cNumber)
+        for class_in in classes:
+            employees = Employee.objects.filter(cNumber=class_in.cNumber)
+            for employee in employees:
+                temp_list = []
+                if (check_work(employee, date)):
+                    temp_list.append(employee.eNumber)
+                    temp_list.append(employee.eName)
+                    temp_list.append(employee.cNumber)
+                    temp_list.append(class_in.cType)
+                    temp_list.append(pName)
+                list.append(temp_list)
+
+
     return render_to_response('show_product_lead.html', {'posts': list},
                               RequestContext(request))
 
@@ -236,8 +239,8 @@ def sub_showpayment(providers):
                 temp_list1.append(material.mNumber)
                 temp_list1.append(material.dName)
                 temp_list1.append(material.dPrice)
-                temp_list1.append(Usage.uDate)
-                temp_list1.append(Usage.uAmount)
+                temp_list1.append(usage.uDate)
+                temp_list1.append(usage.uAmount)
                 break
             temp_list2.append(temp_list1)
         list.append(temp_list2)
@@ -280,6 +283,3 @@ def detail(produce, class_in, date):
     list.append(produce.pWeight)
     list.append((1.0 * produce.pWeight/produce.pUsed))
     return list
-
-def index(request):
-    return render_to_response("index.html")

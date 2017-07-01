@@ -1,17 +1,44 @@
 {% extends "base.html" %}
 {% block title %}员工薪资查询{% endblock %}
+{% block sname %}员工薪资查询{% endblock %}
+{% block sinfo %}请输入想要查询的班组号{% endblock %}
 {% block content %}
 <form action="/show_salary/" method="post">
-<input type=text name=cNumber>
-    <br>
-    <input type=submit>
+<div style="display: flex;">
+<div style="margin-right: 10px">
+<input value="请在此处输入班组号" name="cNumber" type="text" onmouseover="this.style.backgroundColor='#8ED8FC'" 
+style="width: 175px; height: 40px" 
+onmouseout="this.style.backgroundColor='#ffffff'" style="border-width:1px;border-color=black" onclick="this.value=''">
+</div>
+<div>
+    <input type=submit onclick="st()" class="button blue" value="查询">
+    </div>
+    <input type=button onclick="javascript:window.location.href='/index'" class="button green" value="返回">
+    <a><input type=button class="button yellow" value="导出"></a>
+    </div>
 </form>
+<div style="max-height:425px;overflow-y:scroll"> 
+<table class="bordered">
+  <thead>
+    <tr>
+      <th>员工号</th>
+      <th>员工名</th>
+      <th>入职日期</th>
+      <th>总产量</th>
+      <th>全勤补贴</th>
+      <th>总工资</th>
+    </tr>
+  </thead>
+  <tbody id="tablelsw">
 {% for i in posts %}
 <tr>
     {% for j in i %}
-    <td>{{j}}</td>
+    	<td>{{j}}</td>
     {% endfor %}
 </tr>
 {% endfor %}
-<br>
+</tbody>
+</table>
+</div>
 {% endblock %}
+{% block filename %}a.download = "工资表.xls";{% endblock %}

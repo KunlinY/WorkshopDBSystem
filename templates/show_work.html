@@ -4,36 +4,40 @@
 {% block sinfo %}请输入想要查询的班组号{% endblock %}
 {% block content %}
 <form action="/show_work/" method="post">
-<input type=text name=cNumber>
-    <br>
-    <input type=submit>
-</form>
-<label><select name="dataTables-example_length" aria-controls="dataTables-example" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> records per page</label>
-<div class="row">
-    <div class="col-md-12">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                 Advanced Tables
-            </div>
-            <table id="table">
-            <div class="panel-body">
-                <div class="table-responsive">
-                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                        <tbody>
-                        	{% for i in posts %}
-                            <tr class="odd gradeX">
-                                {% for j in i %}
-                                <th>{{j}}</th>
-                                {% endfor %}
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-                
-            </div>
-        </div>
-        <!--End Advanced Tables -->
+<div style="display: flex;">
+<div style="margin-right: 10px">
+<input value="请在此处输入班组号" name="cNumber" type="text" onmouseover="this.style.backgroundColor='#8ED8FC'" 
+style="width: 175px; height: 40px" 
+onmouseout="this.style.backgroundColor='#ffffff'" style="border-width:1px;border-color=black" onclick="this.value=''">
+</div>
+<div>
+    <input type=submit onclick="st()" class="button blue" value="查询">
     </div>
+    <input type=button onclick="javascript:window.location.href='/index'" class="button green" value="返回">   
+    <a><input type=button class="button yellow" value="导出"></a> 
+    </div>
+</form>
+<div style="max-height:425px;overflow-y:scroll">
+<table class="bordered">
+  <thead>
+    <tr>
+      <th>员工号</th>
+      <th>员工名</th>
+      <th>日期</th>
+      <th>工作时长</th>
+      <th>加班时长</th>
+    </tr>
+  </thead>
+  <tbody id="tablelsw">
+{% for i in posts %}
+<tr>
+    {% for j in i %}
+    	<td>{{j}}</td>
+    {% endfor %}
+</tr>
+{% endfor %}
+</tbody>
+</table>
 </div>
 {% endblock %}
+{% block filename %}a.download = "考勤表.xls";{% endblock %}

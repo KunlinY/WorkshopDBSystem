@@ -4,22 +4,32 @@
 {% block sinfo %}请输入想要查询的日期{% endblock %}
 {% block content %}
 <form action="/show_outrate/" method="post">
-<input type=text name=pDate>
-    <br>
-    <input type=submit>
+<div style="display: flex;">
+<div style="margin-right: 10px">
+<input value="请在此处输入日期" name="pDate" type="text" onmouseover="this.style.backgroundColor='#8ED8FC'" 
+style="width: 175px; height: 40px" 
+onmouseout="this.style.backgroundColor='#ffffff'" style="border-width:1px;border-color=black" onclick="this.value=''">
+</div>
+<div>
+    <input type=submit onclick="st()" class="button blue" value="查询">
+    </div>
+    <input type=button onclick="javascript:window.location.href='/index'" class="button green" value="返回">
+    <a><input type=button class="button yellow" value="导出"></a>
+    </div>
 </form>
-<table id="table">
+<div style="max-height:425px;overflow-y:scroll">
+<table class="bordered">
   <thead>
     <tr>
-      <th>编号</th>
-      <th>组名</th>
-      <th>原料</th>
-      <th>产品</th>
+      <th>班组号</th>
+      <th>班组类型</th>
+      <th>原料使用量</th>
+      <th>产量</th>
       <th>出成率</th>
     </tr>
   </thead>
+  <tbody id="tablelsw">
 {% for i in posts %}
-
 <tr>
     {% for j in i %}
     	{% for k in j %}
@@ -28,5 +38,8 @@
     {% endfor %}
 </tr>
 {% endfor %}
+</tbody>
 </table>
+</div>
 {% endblock %}
+{% block filename %}a.download = "出成率表.xls";{% endblock %}
